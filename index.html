@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Dither Tool</title>
@@ -43,7 +43,7 @@
         </div>
 
         <div>
-            <label>RGB Manual</label><br>
+            <label>Manual RGB</label><br>
             <input type="number" id="r" min="0" max="255" value="0" style="width:50px;">
             <input type="number" id="g" min="0" max="255" value="123" style="width:50px;">
             <input type="number" id="b" min="0" max="255" value="255" style="width:50px;">
@@ -51,17 +51,17 @@
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 5px;">
-            <button onclick="addColor()">Añadir a Paleta</button>
+            <button onclick="addColor()">Add to Palette</button>
             <button onclick="generatePalette()" class="primary">Auto (K-Means)</button>
         </div>
     </div>
 
     <div class="preset-section">
-        <label>Cargar Paleta Clásica:</label><br>
+        <label>Load Classic Palette:</label><br>
         <select id="presets" onchange="loadPreset(this.value)" style="width: 250px;">
-            <option value="">-- Selecciona un sistema --</option>
-            <option value="bw">Blanco y Negro (1-bit)</option>
-            <option value="gameboy">GameBoy Original</option>
+            <option value="">-- Select a system --</option>
+            <option value="bw">Black & White (1-bit)</option>
+            <option value="gameboy">Original GameBoy</option>
             <option value="gameboy_color">GameBoy Color</option>
             <option value="nes">NES (Nintendo)</option>
             <option value="c64">Commodore 64</option>
@@ -76,51 +76,51 @@
 
     <div style="margin-bottom: 20px; display: flex; gap: 10px; justify-content: center;">
         <input type="file" id="upload" accept="image/*" style="display:none">
-        <button onclick="document.getElementById('upload').click()"> Subir Imagen</button>
-        <button onclick="savePalette()"> Exportar .JSON</button>
+        <button onclick="document.getElementById('upload').click()"> Upload Image</button>
+        <button onclick="savePalette()"> Export .JSON</button>
         <input type="file" id="loadPalette" accept=".json" style="display:none">
-        <button onclick="document.getElementById('loadPalette').click()"> Importar .JSON</button>
+        <button onclick="document.getElementById('loadPalette').click()"> Import .JSON</button>
     </div>
 
     <canvas id="canvas"></canvas>
 
     <div class="controls">
         <div>
-            <label>Algoritmo de Dither:</label><br>
+            <label>Dither Algorithm:</label><br>
             <select id="mode" style="width: 100%;">
-                <optgroup label="Difusión (Orgánico)">
+                <optgroup label="Diffusion (Organic)">
                     <option value="floyd">Floyd-Steinberg</option>
                     <option value="atkinson">Atkinson</option>
                     <option value="jarvis">Jarvis-Judice-Ninke</option>
                     <option value="stucki">Stucki</option>
                 </optgroup>
-                <optgroup label="Ordenado (Patrón Retro)">
-                    <option value="bayer4">Bayer 4x4 (Clásico)</option>
-                    <option value="bayer8">Bayer 8x8 (Fino)</option>
+                <optgroup label="Ordered (Retro Pattern)">
+                    <option value="bayer4">Bayer 4x4 (Classic)</option>
+                    <option value="bayer8">Bayer 8x8 (Fine)</option>
                 </optgroup>
             </select>
         </div>
         <div>
-            <label>Resolución (Tamaño de Píxel):</label><br>
+            <label>Resolution (Pixel Size):</label><br>
             <select id="resolution" style="width: 100%;">
                 <option value="original">Original</option>
-                <option value="128">64 bits (Fino)</option>
+                <option value="128">64 bits (Fine)</option>
                 <option value="64">32 bits</option>
                 <option value="48">16 bits</option>
                 <option value="32">8 bits (Retro)</option>
                 <option value="16">4 bits (Pixel Art)</option>
-                <option value="8">1 bit (Mosaico)</option>
+                <option value="8">1 bit (Mosaic)</option>
             </select>
         </div>
         <div>
-            <label>Fuerza del Efecto:</label><br>
+            <label>Effect Strength:</label><br>
             <input type="range" id="strength" min="0" max="1" step="0.1" value="1" style="width: 100%;">
         </div>
     </div>
 
     <div style="display: flex; gap: 10px; justify-content: center;">
-        <button onclick="applyDither()" class="primary" style="padding: 15px 40px; font-size: 1.1em;">PROCESAR IMAGEN</button>
-        <button onclick="downloadImage()">⬇ Descargar PNG</button>
+        <button onclick="applyDither()" class="primary" style="padding: 15px 40px; font-size: 1.1em;">PROCESS IMAGE</button>
+        <button onclick="downloadImage()">⬇ Download PNG</button>
     </div>
 </div>
 
